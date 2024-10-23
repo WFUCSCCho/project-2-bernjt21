@@ -68,7 +68,6 @@ BST vs. AVL Tree running time (insertion):
 (insert here)
 
 BST vs. AVL Tree running time (search):
-(insert here)
 
 BST vs. AVL Tree running rate (insertion):
 (insert here)
