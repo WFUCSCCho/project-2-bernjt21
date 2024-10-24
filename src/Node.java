@@ -59,5 +59,6 @@ public class Node<T extends Comparable<T>> {
     public boolean isLeaf() {
         return (left == null) && (right == null);
     }
+
 }
 
