@@ -62,6 +62,7 @@ public class AvlTree<AnyType extends Comparable<? super AnyType>> {
      * @param t the node that roots the subtree.
      * @return the new root of the subtree.
      */
+    //removes nodes from the AVL tree
     private AvlNode<AnyType> remove( AnyType x, AvlNode<AnyType> t ) {
 	// FINISH ME
         if (t == null) {
@@ -99,6 +100,7 @@ public class AvlTree<AnyType extends Comparable<? super AnyType>> {
      * Find the largest item in the tree.
      * @return the largest item of null if empty.
      */
+    //finds largest node
     public AnyType findMax( ) {
         if( isEmpty( ) )
             throw new UnderflowException( );
@@ -110,6 +112,7 @@ public class AvlTree<AnyType extends Comparable<? super AnyType>> {
      * @param x the item to search for.
      * @return true if x is found.
      */
+    //searches the tree for a Node
     public boolean contains( AnyType x ) {
         return contains( x, root );
     }
@@ -117,6 +120,7 @@ public class AvlTree<AnyType extends Comparable<? super AnyType>> {
     /**
      * Make the tree logically empty.
      */
+    //makes the tree empty
     public void makeEmpty( ) {
         root = null;
     }
@@ -125,6 +129,7 @@ public class AvlTree<AnyType extends Comparable<? super AnyType>> {
      * Test if the tree is logically empty.
      * @return true if empty, false otherwise.
      */
+    //returns true if empty
     public boolean isEmpty( ) {
         return root == null;
     }
@@ -132,6 +137,7 @@ public class AvlTree<AnyType extends Comparable<? super AnyType>> {
     /**
      * Print the tree contents in sorted order.
      */
+    //prints the tree
     public void printTree( ) {
         if( isEmpty( ) )
             System.out.println( "Empty tree" );
@@ -142,6 +148,7 @@ public class AvlTree<AnyType extends Comparable<? super AnyType>> {
     private static final int ALLOWED_IMBALANCE = 1;
 
     // Assume t is either balanced or within one of being balanced
+    //balances the tree
     private AvlNode<AnyType> balance( AvlNode<AnyType> t ) {
         // FINISH ME
         if (t == null) {
@@ -163,6 +170,7 @@ public class AvlTree<AnyType extends Comparable<? super AnyType>> {
         return t;
     }
 
+    //checks to make sure the tree is balanced
     public void checkBalance( ) {
         checkBalance( root );
     }
@@ -243,10 +251,8 @@ public class AvlTree<AnyType extends Comparable<? super AnyType>> {
      */
     private boolean contains( AnyType x, AvlNode<AnyType> t ) {
 	// FINISH ME
-        while( t != null )
-        {
+        while( t != null ) {
             int compareResult = x.compareTo( t.element );
-
             if( compareResult < 0 )
                 t = t.left;
             else if( compareResult > 0 )
@@ -254,7 +260,6 @@ public class AvlTree<AnyType extends Comparable<? super AnyType>> {
             else
                 return true;    // Match
         }
-
         return false;
     }
 

@@ -33,6 +33,7 @@ public class Proj2 {
         inputFileNameScanner.nextLine();
 
         // FINISH ME
+        //implements arraylist and adds all the data for each dog data line
         ArrayList<DogData> dogArrayList = new ArrayList<>();
         Scanner scnr = new Scanner(new File("./src/dogbreeds.csv"));
         Scanner inputscnr = new Scanner(inputFileNameStream);
@@ -60,11 +61,12 @@ public class Proj2 {
 
 
         File file = new File("./output.txt");
-
+        //performs collections.sort on arraylsit
         Collections.sort(dogArrayList);
-        //implement BST for sorted
-        BST<DogData> sortedBST = new BST<>();
 
+        //implements BST for sorted
+        BST<DogData> sortedBST = new BST<>();
+        //takes the time and adds the arraylist to the BST
         long startTime = System.nanoTime();
         for (DogData data : dogArrayList) {
             sortedBST.insert(data);
@@ -72,9 +74,10 @@ public class Proj2 {
         long endTime = System.nanoTime();
         writeToFile("Inserting sorted BST took:  " + (endTime - startTime) + " ns", "./output.txt");
 
-        //implement AVL for sorted
-        startTime = System.nanoTime();
+        //implements AVL for sorted
         AvlTree<DogData> sortedAvlTree = new AvlTree<>();
+        //takes the time and adds the arraylist to the AVL
+        startTime = System.nanoTime();
         for (DogData data : dogArrayList) {
             sortedAvlTree.insert(data);
         }
@@ -98,9 +101,9 @@ public class Proj2 {
         writeToFile("Searching sorted AVL took:  " + (endTime - startTime) + " ns", "./output.txt");
 
 
-
+        //shuffle arraylist
         Collections.shuffle(dogArrayList);
-        //implement BST for random
+        //implement BST for shuffled
         startTime = System.nanoTime();
         BST<DogData> randomBST = new BST<>();
         for (DogData data : dogArrayList) {
@@ -110,7 +113,7 @@ public class Proj2 {
         writeToFile("Inserting shuffled BST took:  " + (endTime - startTime) + " ns", "./output.txt");
 
 
-        //implement AVL for random
+        //implement AVL for shuffled
         startTime = System.nanoTime();
         AvlTree<DogData> randomAvlTree = new AvlTree<>();
         for (DogData data : dogArrayList) {
@@ -119,7 +122,7 @@ public class Proj2 {
         endTime = System.nanoTime();
         writeToFile("Inserting shuffled AVL tree:  " + (endTime - startTime) + " ns", "./output.txt");
 
-        //search randomBSTtree
+        //search for shuffled BST
         startTime = System.nanoTime();
         for (DogData data : dogArrayList) {
             randomBST.search(data);
@@ -127,7 +130,7 @@ public class Proj2 {
         endTime = System.nanoTime();
         writeToFile("Searching shuffled BST took:  " + (endTime - startTime) + " ns", "./output.txt");
 
-        //search randomAvlTree
+        //search for shuffled AVL
         startTime = System.nanoTime();
         for (DogData data : dogArrayList) {
             randomAvlTree.contains(data);
@@ -137,6 +140,8 @@ public class Proj2 {
 
         writeToFile("", "./output.txt");
     }
+
+    //writeToFile is used to write the nanoseconds onto the output file
     public static void writeToFile(String content, String filePath) {
         try {
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filePath, true));
